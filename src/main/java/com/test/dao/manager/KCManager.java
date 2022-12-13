@@ -18,5 +18,14 @@ public class KCManager {
         q.eq(KCDO::getWLID,wlId);
         return kcMapper.selectOne(q) != null;
     }
+
+
+    /**
+     * 修改库存信息
+     */
+    public boolean updateKC(KCDO kcdo) {
+        return kcMapper.updateById(kcdo) > 0;
+    }
+
 }
 

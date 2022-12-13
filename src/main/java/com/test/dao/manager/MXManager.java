@@ -18,4 +18,8 @@ public class MXManager {
         q.eq(DJMXDO::getWLID,wlId);
         return mxMapper.selectOne(q) != null;
     }
+
+    public boolean addMX(DJMXDO djmxdo) {
+        return mxMapper.insert(djmxdo) > 0;
+    }
 }
