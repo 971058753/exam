@@ -5,10 +5,10 @@ CREATE TABLE `BAS_WLJCXXSZ` (
 `WLGG` varchar(50) NOT NULL,
 `WLDW` varchar(10) NOT NULL,
 `TPLJ` varchar(50) NOT NULL,
-`DM_SHZJ` tinyint(2) DEFAULT '0',
+`DM_SHZT` tinyint(2) DEFAULT '0',
 PRIMARY KEY (`WLID`),
 UNIQUE KEY `WLDH_UNIQUE` (`WLDH`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `CJGK_DJMX` (
 `MXID` int(4) NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE `CJGK_DJMX` (
 `JE` decimal(18,2) NOT NULL DEFAULT '0.00',
 `BZ` varchar(200) DEFAULT NULL,
 PRIMARY KEY (`MXID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `CKGL_DJZD` (
 `DJID` int(4) NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE `CKGL_DJZD` (
 `BZRQ` datetime NOT NULL,
 `DM_YJBZ` tinyint(2) NOT NULL DEFAULT '0',
 PRIMARY KEY (`DJID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `CKGL_KCXX` (
 `KCID` int(4) NOT NULL AUTO_INCREMENT,
@@ -40,4 +40,43 @@ CREATE TABLE `CKGL_KCXX` (
 `SL` int(11) NOT NULL,
 `JE` decimal(18,2) NOT NULL DEFAULT '0.00',
 PRIMARY KEY (`KCID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+//物料增
+curl --location --request POST 'localhost:9999/wl/create' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"WLDH": "代号",
+"WLMC": "名称",
+"WLGG": "规格",
+"WLDW": "单位",
+"TPLJ": "图片"
+}'
+
+//物料减
+curl --location --request GET 'localhost:9999/wl/delete?wlId=1'
+
+//入库
+curl --location --request POST 'localhost:9999/kc/update' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"WLID": "2",
+"SL": 1,
+"PH": "PH",
+"DJ": "2.01",
+"DM_CZLX": "201",
+"BZR": "韩非凡"
+}'
+
+//出库
+
+curl --location --request POST 'localhost:9999/kc/update' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"WLID": "2",
+"SL": 1,
+"PH": "PH",
+"DJ": "2.01",
+"DM_CZLX": "202",
+"BZR": "feifan"
+}'

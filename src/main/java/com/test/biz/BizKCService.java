@@ -99,7 +99,7 @@ public class BizKCService {
             }
         }
         djmxdo.setKCID(kcdo.getKCID());
-        if (!mxManager.addMX(null)) {
+        if (!mxManager.addMX(djmxdo)) {
             throw new BusinessException();
         }
         return true;

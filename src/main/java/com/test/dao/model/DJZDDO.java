@@ -11,12 +11,15 @@ import java.util.Date;
 @Data
 @TableName("CKGL_DJZD")
 public class DJZDDO {
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.AUTO,value = "DJID")
     private Integer DJID;
+    @TableField("DJBH")
     private String DJBH;
     @TableField("DM_CZLX")
     private Integer DM_CZLX;
+    @TableField("BZR")
     private String BZR;
+    @TableField("BZRQ")
     private Date BZRQ;
     @TableField("DM_YJBZ")
     private Integer DM_YJBZ;

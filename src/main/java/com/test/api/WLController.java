@@ -2,8 +2,6 @@ package com.test.api;
 
 import com.test.aop.annotation.ErrorCatch;
 import com.test.biz.BizWLService;
-import com.test.dao.manager.WLManager;
-import com.test.dao.mapper.WLMapper;
 import com.test.to.ServiceResult;
 import com.test.to.WLTO;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +13,8 @@ import javax.annotation.Resource;
 /**
  * 物料
  */
-@RestController("/wl")
+@RestController
+@RequestMapping("/wl")
 public class WLController {
 
     @Resource
