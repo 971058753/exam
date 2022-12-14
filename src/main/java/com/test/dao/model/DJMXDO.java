@@ -6,16 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @TableName("CJGK_DJMX")
 public class DJMXDO {
     @TableId(type = IdType.AUTO)
+    private Integer MXID;
+    private Integer DJID;
+    private Integer KCID;
     private Integer WLID;
-    private String WLDH;
-    private String WLMC;
-    private String WLGG;
-    private String WLDW;
-    private String TPLJ;
-    @TableField("DM_SHZT")
-    private Integer DM_SHZT;
+    private String PH;
+    private Integer SL;
+    private BigDecimal DJ;
+    private BigDecimal JE;
+    private String BZ;
 }

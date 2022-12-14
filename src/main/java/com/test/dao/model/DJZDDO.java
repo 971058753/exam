@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @TableName("CKGL_DJZD")
 public class DJZDDO {
@@ -15,6 +17,7 @@ public class DJZDDO {
     @TableField("DM_CZLX")
     private Integer DM_CZLX;
     private String BZR;
+    private Date BZRQ;
     @TableField("DM_YJBZ")
     private Integer DM_YJBZ;
 }

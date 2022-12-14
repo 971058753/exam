@@ -1,6 +1,7 @@
 package com.test.aop;
 
 
+import com.test.commom.BusinessException;
 import com.test.to.ServiceResult;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -20,6 +21,9 @@ public class ErrorCatchAdvice {
     public Object handlerRpcResult(ProceedingJoinPoint point) throws Throwable {
         try {
             return point.proceed();
+        } catch (BusinessException e) {
+            log.error("{} error, args {}", point.getSignature().getName(), point.getArgs(), e);
+            return ServiceResult.buildFail(e.getMessage());
         } catch (Exception e) {
             log.error("{} error, args {}", point.getSignature().getName(), point.getArgs(), e);
             return ServiceResult.buildFail("系统异常");
